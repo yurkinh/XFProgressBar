@@ -156,15 +156,13 @@ namespace XFProgressBar.Controls
             if (StartColor != Color.Default && EndColor != Color.Default)
             {
                 barColorPaint.Shader = SKShader.CreateLinearGradient(
-                               new SKPoint(skrect.Left, skrect.Top),
-                               new SKPoint(skrect.Right, skrect.Bottom),
+                               new SKPoint(skrect.Left, skrect.Bottom),
+                               new SKPoint(skrect.Right, skrect.Top),
                                new SKColor[] { StartColor.ToSKColor(), EndColor.ToSKColor() },
                                new float[] { 0, 1 },
                                SKShaderTileMode.Repeat);
             }
-            canvas.DrawRoundRect(PGWidth-PGWidth * Progress / 100, 0, PGWidth, PGWidth, PGHeight / 2, 0, barColorPaint);
-
-            
+            canvas.DrawRoundRect(0, 0, PGWidth * Progress / 100, PGHeight, PGWidth / 2, 0, barColorPaint);            
 
             canvas.Restore();
 
