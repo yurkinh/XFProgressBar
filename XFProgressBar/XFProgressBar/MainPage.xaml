@@ -11,7 +11,7 @@
         <controls:VerticalProgressBar                        
             BackgroundColor="red"
                         HorizontalOptions="Center"
-                        x:Name="GaugeControl"                          
+                        x:Name="VGaugeControl"                          
                         PGWidth="50"
                         PGHeight="250"
                         BarColor="Green"
@@ -19,9 +19,20 @@
                         StartColor="Green"
                         EndColor="Red"
                         FrameColor="Black"
-                        Progress="0.5"
+                        Progress="50"
                         FrameBold="2" />
-        
+
+        <controls:HorizontalProgressBar                                    
+                        HorizontalOptions="Center"
+                        x:Name="HGaugeControl"                          
+                        PGWidth="250"
+                        PGHeight="50"
+                        BarColor="Green"
+                        BGColor="Yellow"                        
+                        FrameColor="Black"
+                        Progress="50"
+                        FrameBold="2" />
+
     </StackLayout>
 
 </ContentPage>

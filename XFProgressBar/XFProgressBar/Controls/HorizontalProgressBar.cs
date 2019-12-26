@@ -1,15 +1,13 @@
 ﻿using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
-
 using Xamarin.Forms;
-using Color = Xamarin.Forms.Color;
 
 namespace XFProgressBar.Controls
 {
-    public class VerticalProgressBar : SKCanvasView
+    public class HorizontalProgressBar : SKCanvasView
     {
-        public VerticalProgressBar()
+        public HorizontalProgressBar()
         {
             WidthRequest = 300;
             HeightRequest = 300;
@@ -116,7 +114,7 @@ namespace XFProgressBar.Controls
             canvas.Save();
 
             canvas.Translate(width / 2, height / 2);
-            canvas.Scale(Math.Min(width / 210f, height / 520f));           
+            canvas.Scale(Math.Min(width / 210f, height / 520f));
 
             var rect = new SKRect(-100, -100, 100, 100);
 
@@ -130,7 +128,7 @@ namespace XFProgressBar.Controls
                 Style = SKPaintStyle.Fill,
                 StrokeWidth = 0
             };
-            
+
 
             var barColorPaint = new SKPaint
             {
@@ -149,9 +147,9 @@ namespace XFProgressBar.Controls
             };
 
             var skrect = new SKRect(0, 0, PGWidth, PGHeight);
-            var skRoundRect = new SKRoundRect(skrect, PGWidth / 2, PGWidth / 2);                     
+            var skRoundRect = new SKRoundRect(skrect, PGHeight / 2, PGHeight / 2);
 
-            canvas.DrawRoundRect(0, 0, PGWidth, PGHeight, PGWidth / 2, PGWidth / 2, bgColorPaint);            
+            canvas.DrawRoundRect(0, 0, PGWidth, PGHeight, PGHeight / 2, PGHeight / 2, bgColorPaint);
             canvas.DrawRoundRect(skRoundRect, frameColorPaint);
             canvas.ClipRoundRect(skRoundRect, SKClipOperation.Intersect);
 
@@ -164,7 +162,9 @@ namespace XFProgressBar.Controls
                                new float[] { 0, 1 },
                                SKShaderTileMode.Repeat);
             }
-            canvas.DrawRoundRect(0, PGHeight * Progress/100, PGWidth, PGHeight, PGWidth / 2, 0, barColorPaint);
+            canvas.DrawRoundRect(PGWidth-PGWidth * Progress / 100, 0, PGWidth, PGWidth, PGHeight / 2, 0, barColorPaint);
+
+            
 
             canvas.Restore();
 
@@ -178,7 +178,7 @@ namespace XFProgressBar.Controls
             // the visualization, including the size of the control, we'll repaint
             if (propertyName == BGColorProperty.PropertyName
                 || propertyName == BarColorProperty.PropertyName
-                || propertyName == FrameColorProperty.PropertyName                
+                || propertyName == FrameColorProperty.PropertyName
                 || propertyName == FrameBoldProperty.PropertyName
                 || propertyName == PGHeightProperty.PropertyName
                 || propertyName == PGWidthProperty.PropertyName
@@ -193,3 +193,6 @@ namespace XFProgressBar.Controls
 
     }
 }
+
+
+

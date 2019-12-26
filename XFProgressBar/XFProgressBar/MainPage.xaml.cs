@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Timers;
+using SkiaSharp.Views.Forms;
 
 namespace XFProgressBar
 {
@@ -32,28 +33,54 @@ namespace XFProgressBar
 
         private void OnTimedEvent(object sender, ElapsedEventArgs e)
         {
-            Device.BeginInvokeOnMainThread(async () => await AnimateProgress(RAND.Next(100)*0.01f));
+            Device.BeginInvokeOnMainThread(async () => await AnimateProgress1(RAND.Next(100)));
+            Device.BeginInvokeOnMainThread(async () => await AnimateProgress2(RAND.Next(100)));
         }
 
-        async Task AnimateProgress(float progress)
+        async Task AnimateProgress1(float progress)
         {
-            if (progress == GaugeControl.Progress)
+            if (progress == VGaugeControl.Progress)
             {
                 return;
             }
-            if (progress <= GaugeControl.Progress)
+            if (progress <= VGaugeControl.Progress)
             {
-                for (float i = GaugeControl.Progress; i >= progress; i-=0.01f)
+                for (int i = VGaugeControl.Progress; i >= progress; i--)
                 {
-                    GaugeControl.Progress = i;
+                    VGaugeControl.Progress = i;
                     await Task.Delay(1);
                 }
             }
             else
             {
-                for (float i = GaugeControl.Progress; i <= progress; i += 0.01f)
+                for (int i = VGaugeControl.Progress; i <= progress; i ++)
                 {
-                    GaugeControl.Progress = i;
+                    VGaugeControl.Progress = i;
+                    await Task.Delay(1);
+                }
+            }
+
+        }
+
+        async Task AnimateProgress2(float progress)
+        {
+            if (progress == HGaugeControl.Progress)
+            {
+                return;
+            }
+            if (progress <= HGaugeControl.Progress)
+            {
+                for (int i = HGaugeControl.Progress; i >= progress; i--)
+                {
+                    HGaugeControl.Progress = i;
+                    await Task.Delay(1);
+                }
+            }
+            else
+            {
+                for (int i = HGaugeControl.Progress; i <= progress; i++)
+                {
+                    HGaugeControl.Progress = i;
                     await Task.Delay(1);
                 }
             }
