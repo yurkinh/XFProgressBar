@@ -1,0 +1,65 @@
+using System;
+using SkiaSharp;
+
+void Draw(SKCanvas canvas, int width, int height)
+{
+ SKPaint backPaint = new SKPaint
+            {
+                Style = SKPaintStyle.Fill,
+                Color = SKColors.WhiteSmoke,
+            };
+
+            canvas.DrawRect(new SKRect(0, 0, width, height), backPaint);
+             canvas.Save();
+            
+
+            canvas.Translate(width / 2, height / 2);
+            canvas.Scale(Math.Min(width / 210f, height / 520f));
+           
+
+            var rect = new SKRect(-200, -200, 200, 200);
+
+            // Add a buffer for the rectangle
+            rect.Inflate(-10, -10);      
+    float PGWidth=35;     
+    float PGHeight=250;     
+            
+	var bgColorPaint = new SKPaint
+	{
+		Color = SKColors.Green,
+		IsAntialias = true,
+		Style = SKPaintStyle.Fill,
+		StrokeWidth = 1
+	};
+	
+	var barColorPaint = new SKPaint
+	{
+		Color = SKColors.Red,
+		IsAntialias = true,
+		Style = SKPaintStyle.Fill,
+		StrokeWidth = 1
+	};
+
+var frameColorPaint = new SKPaint
+	{
+		Color = SKColors.Black,
+		IsAntialias = true,
+		Style = SKPaintStyle.Stroke,
+		StrokeWidth = 1
+	};
+	
+	canvas.DrawRoundRect(0, 0, PGWidth, PGHeight,PGWidth/2,PGWidth/2, bgColorPaint);	
+	
+	var skrect=new SKRect(0, 0, PGWidth, PGHeight);
+	var skRoundRect = new SKRoundRect(skrect, PGWidth / 2, PGWidth / 2 );
+    canvas.DrawRoundRect(skRoundRect, frameColorPaint);
+    canvas.ClipRoundRect(skRoundRect, SKClipOperation.Intersect);
+    barColorPaint.Shader = SKShader.CreateLinearGradient(
+                                new SKPoint(skrect.Left, skrect.Top),
+                                new SKPoint(skrect.Right, skrect.Bottom),
+                                new SKColor[] { SKColors.Red, SKColors.Blue },
+                                new float[] { 0, 1 },
+                                SKShaderTileMode.Repeat);
+    canvas.DrawRoundRect(0, PGHeight-240, PGWidth, 240 ,PGWidth/2,0, barColorPaint);
+    canvas.Restore();
+}
