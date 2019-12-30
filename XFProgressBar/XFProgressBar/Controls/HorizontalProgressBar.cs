@@ -14,7 +14,7 @@ namespace XFProgressBar.Controls
         }
 
         public static readonly BindableProperty BGColorProperty =
-           BindableProperty.Create(nameof(BGColor), typeof(Color), typeof(VerticalProgressBar), Color.White);
+           BindableProperty.Create(nameof(BGColor), typeof(Color), typeof(HorizontalProgressBar), Color.White);
 
         public Color BGColor
         {
@@ -23,7 +23,7 @@ namespace XFProgressBar.Controls
         }
 
         public static readonly BindableProperty BarColorProperty =
-           BindableProperty.Create(nameof(BarColor), typeof(Color), typeof(VerticalProgressBar), Color.FromRgba(52 / 255, 181 / 255, 240 / 255, 1));
+           BindableProperty.Create(nameof(BarColor), typeof(Color), typeof(HorizontalProgressBar), Color.FromRgba(52 / 255, 181 / 255, 240 / 255, 1));
 
         public Color BarColor
         {
@@ -32,7 +32,7 @@ namespace XFProgressBar.Controls
         }
 
         public static readonly BindableProperty FrameColorProperty =
-           BindableProperty.Create(nameof(FrameColor), typeof(Color), typeof(VerticalProgressBar), Color.FromRgba(161 / 255, 161 / 255, 161 / 255, 1));
+           BindableProperty.Create(nameof(FrameColor), typeof(Color), typeof(HorizontalProgressBar), Color.FromRgba(161 / 255, 161 / 255, 161 / 255, 1));
 
         public Color StartColor
         {
@@ -41,7 +41,7 @@ namespace XFProgressBar.Controls
         }
 
         public static readonly BindableProperty StartColorProperty =
-           BindableProperty.Create(nameof(StartColor), typeof(Color), typeof(VerticalProgressBar), Color.Default);
+           BindableProperty.Create(nameof(StartColor), typeof(Color), typeof(HorizontalProgressBar), Color.Default);
 
         public Color EndColor
         {
@@ -50,7 +50,7 @@ namespace XFProgressBar.Controls
         }
 
         public static readonly BindableProperty EndColorProperty =
-           BindableProperty.Create(nameof(EndColor), typeof(Color), typeof(VerticalProgressBar), Color.Default);
+           BindableProperty.Create(nameof(EndColor), typeof(Color), typeof(HorizontalProgressBar), Color.Default);
 
         public Color FrameColor
         {
@@ -59,7 +59,7 @@ namespace XFProgressBar.Controls
         }
 
         public static readonly BindableProperty FrameBoldProperty =
-           BindableProperty.Create(nameof(FrameBold), typeof(float), typeof(VerticalProgressBar), 0.1f);
+           BindableProperty.Create(nameof(FrameBold), typeof(float), typeof(HorizontalProgressBar), 0.1f);
 
         public float FrameBold
         {
@@ -68,7 +68,7 @@ namespace XFProgressBar.Controls
         }
 
         public static readonly BindableProperty PGHeightProperty =
-          BindableProperty.Create(nameof(PGHeight), typeof(float), typeof(VerticalProgressBar), 200f);
+          BindableProperty.Create(nameof(PGHeight), typeof(float), typeof(HorizontalProgressBar), 200f);
 
         public float PGHeight
         {
@@ -77,7 +77,7 @@ namespace XFProgressBar.Controls
         }
 
         public static readonly BindableProperty PGWidthProperty =
-          BindableProperty.Create(nameof(PGWidth), typeof(float), typeof(VerticalProgressBar), 20f);
+          BindableProperty.Create(nameof(PGWidth), typeof(float), typeof(HorizontalProgressBar), 20f);
 
         public float PGWidth
         {
@@ -86,7 +86,7 @@ namespace XFProgressBar.Controls
         }
 
         public static readonly BindableProperty ProgressProperty =
-           BindableProperty.Create(nameof(Progress), typeof(int), typeof(VerticalProgressBar), 0);
+           BindableProperty.Create(nameof(Progress), typeof(int), typeof(HorizontalProgressBar), 0);
 
         public int Progress
         {
